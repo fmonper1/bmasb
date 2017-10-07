@@ -34,6 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'simple_form'
 gem 'devise'
+gem 'bootstrap', '~> 4.0.0.beta'
+gem 'jquery-rails'
+gem "haml-rails", "~> 1.0"
+gem 'normalize-rails'
+gem 'popper_js'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

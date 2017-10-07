@@ -1,0 +1,14 @@
+= form_with(model: type, local: true) do |form|
+  - if type.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(type.errors.count, "error")
+        prohibited this type from being saved:
+      %ul
+        - type.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :titulo
+    = form.text_field :titulo, id: :type_titulo
+  .actions
+    = form.submit

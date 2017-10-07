@@ -1,0 +1,8 @@
+= simple_form_for @shop do |f|
+  = f.input :titulo
+  = f.input :dir1
+  = f.input :dir2
+  = f.input :dir3
+  = f.input :dir4
+  = f.association :company, label_method: :titulo, value_method: :id, include_blank: true
+  = f.button :submit

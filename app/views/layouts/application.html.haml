@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title BmasB
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      %a.navbar-brand{:href => "#"} BmasB
+      %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav
+          = link_to "Eventos", events_path, :class => "nav-item nav-link"
+          = link_to "Tiendas", shops_path, :class => "nav-item nav-link"
+          = link_to "Compañias", companies_path, :class => "nav-item nav-link"
+
+    .container
+      / Example row of columns
+      .row
+
+        .col-md-12
+          %p.notice= notice
+          %p.alert= alert
+        .col-md-12
+          = yield

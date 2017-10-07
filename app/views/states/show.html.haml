@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Titulo:
+  = @state.titulo
+= link_to 'Edit', edit_state_path(@state)
+|
+= link_to 'Back', states_path

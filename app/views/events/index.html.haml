@@ -1,0 +1,39 @@
+.alert.alert-primary{:role => "alert"}
+  Por hacer
+  %ul
+    %li Añadir comentarios a eventos
+    %li Añadir "creado por" a los eventos
+    %li Añadir un "log" a los eventos para ver quien cambio el estado por ultima vez
+
+.row
+  .col-md-6
+    %h3 Eventos
+  .col-md-6
+    = link_to 'Crear Nuevo Evento', new_event_path, :class => "button btn btn-primary btn-sm float-right"
+
+%table.table
+  %thead
+    %tr
+      %th Titulo
+      %th Descripcion
+      %th Fecha contacto
+      %th Nombre contacto
+      %th Numero contacto
+      %th Tienda
+      %th Tipo
+      %th Estado
+      %th{colspan: "1"}
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= event.titulo
+        %td= event.descripcion
+        %td= event.fecha_contacto
+        %td= event.nombre_contacto
+        %td= event.numero_contacto
+        %td= event.shop.titulo
+        %td= event.type.titulo
+        %td= event.state.titulo
+        %td= link_to 'Ver Evento', event
+
+%br/

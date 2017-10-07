@@ -1,0 +1,43 @@
+%p
+  Estado "#{@event.state.titulo}"
+.card
+  .card-header
+    = @event.type.titulo
+  .card-body
+    %h4.card-title
+      = @event.titulo
+    %p.card-text
+      Contacto: #{@event.nombre_contacto}
+      |
+      Fecha #{@event.fecha_contacto}
+      |
+      #{@event.numero_contacto}
+    %p.card-text
+      = @event.shop.titulo
+      = @event.shop.dir1
+    %p.card-text
+      = simple_format(@event.descripcion)
+
+    %br
+
+    %a.btn.btn-primary.btn-sm{:href => edit_event_path(@event)} Editar
+    = link_to 'Eliminar', @event, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
+    = link_to 'volver', events_path, :class => "button btn btn-link btn-sm"
+
+%br
+
+%h3 Comments
+- @event.comments.each do |comment|
+  %p
+    %b Comment:
+    = comment.body
+
+%br
+%h4 Add a comment:
+= form_for([@event, @event.comments.build]) do |f|
+  .field
+    = f.label :comentario
+    %br/
+    = f.text_area :comentario
+  .actions
+    = f.submit

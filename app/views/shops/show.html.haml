@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Titulo:
+  = @shop.titulo
+%p
+  %strong Dir1:
+  = @shop.dir1
+%p
+  %strong Dir2:
+  = @shop.dir2
+%p
+  %strong Dir3:
+  = @shop.dir3
+%p
+  %strong Dir4:
+  = @shop.dir4
+= link_to 'Edit', edit_shop_path(@shop)
+|
+= link_to 'Back', shops_path
