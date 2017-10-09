@@ -1,0 +1,12 @@
+.card
+  .card-body
+    %p
+      %b
+        = comment.user.email
+      %br
+
+      = comment.comentario
+
+    - if current_user.id == comment.user_id
+      = link_to 'Eliminar Comentario', [comment.event, comment], method: :delete, data: { confirm: 'Are you sure?' }
+%br

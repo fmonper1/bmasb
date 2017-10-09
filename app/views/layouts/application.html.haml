@@ -9,7 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-      %a.navbar-brand{:href => "#"} BmasB
+      %a.navbar-brand{:href => "#"} BmásB
       %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
       #navbarNavAltMarkup.collapse.navbar-collapse
@@ -17,6 +17,10 @@
           = link_to "Eventos", events_path, :class => "nav-item nav-link"
           = link_to "Tiendas", shops_path, :class => "nav-item nav-link"
           = link_to "Compañias", companies_path, :class => "nav-item nav-link"
+          - if user_signed_in?
+            = link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-item nav-link float-right"
+          - else
+            = link_to "Login", new_user_session_path, :class => "nav-item nav-link float-right"
 
     .container
       / Example row of columns

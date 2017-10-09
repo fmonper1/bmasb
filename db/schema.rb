@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920101824) do
+ActiveRecord::Schema.define(version: 20171009010413) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comentario"
@@ -39,9 +39,11 @@ ActiveRecord::Schema.define(version: 20170920101824) do
     t.integer "shop_id"
     t.integer "type_id"
     t.integer "state_id"
+    t.integer "user_id"
     t.index ["shop_id"], name: "index_events_on_shop_id"
     t.index ["state_id"], name: "index_events_on_state_id"
     t.index ["type_id"], name: "index_events_on_type_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "models", force: :cascade do |t|
