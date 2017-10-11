@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009010413) do
+ActiveRecord::Schema.define(version: 20171009134802) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comentario"
@@ -75,11 +75,8 @@ ActiveRecord::Schema.define(version: 20171009010413) do
     t.index ["company_id"], name: "index_shops_on_company_id"
   end
 
-  create_table "states", force: :cascade do |t|
-    t.string "titulo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "states" because of following StandardError
+#   Unknown type 'String' for column 'table_class'
 
   create_table "types", force: :cascade do |t|
     t.string "titulo"

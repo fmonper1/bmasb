@@ -26,7 +26,7 @@
       %th{colspan: "1"}
   %tbody
     - @events.each do |event|
-      %tr
+      %tr{class: event.state.table_class}
         %td= event.titulo
         %td= event.descripcion
         %td= event.fecha_contacto
