@@ -12,29 +12,57 @@
   .col-md-6
     = link_to 'Crear Nuevo Evento', new_event_path, :class => "button btn btn-primary btn-sm float-right"
 
-%table.table
-  %thead
+
+%ul.nav.nav-tabs
+  %li.nav-item
+    %a.nav-link{:href => "/events", :class => current_class?('todos')} Mostrar Todos
+
+  %li.nav-item
+    %a.nav-link{:href => "?status=nuevos", :class => current_class?('nuevos')} Nuevos (#{@newCount})
+
+  %li.nav-item
+    %a.nav-link{:href => "?status=penPres", :class => current_class?('penPres')} Pen. Presupuesto (#{@e2Count})
+
+  %li.nav-item
+    %a.nav-link{:href => "?status=presAcpt", :class => current_class?('presAcpt')} Presupuesto Aceptado (#{@e3Count})
+
+  %li.nav-item
+    %a.nav-link{:href => "?status=penMat", :class => current_class?('penMat')} Pen. Material (#{@e4Count})
+
+  %li.nav-item
+    %a.nav-link{:href => "?status=penFecha", :class => current_class?('penFecha')} Pen. Fecha Install (#{@e5Count})
+
+  %li.nav-item
+    %a.nav-link{:href => "?status=penSAT", :class => current_class?('penSAT')} Pen. SAT (#{@e6Count})
+
+  %li.nav-item
+    %a.nav-link{:href => "?status=completados", :class => current_class?('completados')} Facturados (#{@e7Count})
+
+%br
+
+%table.table.table-responsive
+  %thead.thead-inverse
     %tr
-      %th Titulo
-      %th Descripcion
-      %th Fecha contacto
-      %th Nombre contacto
-      %th Numero contacto
-      %th Tienda
-      %th Tipo
-      %th Estado
-      %th{colspan: "1"}
+      %th.col-md-2 Titulo
+      %th.col-md-5 Descripcion
+      %th.col-auto Fecha contacto
+      %th.col-auto Nombre contacto
+      %th.col-auto Numero contacto
+      %th.col-auto Tienda
+      %th.col-auto Tipo
+      -# %th Estado
   %tbody
-    - @events.each do |event|
+    - @render.each do |event|
       %tr{class: event.state.table_class}
-        %td= event.titulo
+        %td= link_to event.titulo, event
         %td= event.descripcion
         %td= event.fecha_contacto
         %td= event.nombre_contacto
         %td= event.numero_contacto
         %td= event.shop.titulo
         %td= event.type.titulo
-        %td= event.state.titulo
-        %td= link_to 'Ver Evento', event
+        -# %td= event.state.titulo
 
 %br/
+
+#{paginate @render, theme: 'twitter-bootstrap-4'}

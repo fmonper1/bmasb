@@ -4,8 +4,79 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.page(params[:page]).per(5)
+    @nuevos = Event.where(state_id: 1).page(params[:page]).per(5)
+    @pendientePresupuesto = Event.where(state_id: 2).page(params[:page]).per(5)
+    @presupuestoAceptado   = Event.where(state_id: 3).page(params[:page]).per(5)
+    @pendienteMaterial = Event.where(state_id: 4).page(params[:page]).per(5)
+    @pendienteFechaInstalacion = Event.where(state_id: 5).page(params[:page]).per(5)
+    @pendienteSAT = Event.where(state_id: 6).page(params[:page]).per(5)
+    @facturados = Event.where(state_id: 7).page(params[:page]).per(5)
+
+
+    @render = @events
+
+    @newCount = @nuevos.total_count
+    @e2Count = @pendientePresupuesto.total_count
+    @e3Count = @presupuestoAceptado.total_count
+    @e4Count = @pendienteMaterial.total_count
+    @e5Count = @pendienteFechaInstalacion.total_count
+    @e6Count = @pendienteSAT.total_count
+    @e7Count = @facturados.total_count
+
+
+    # SET activeLink to set active links in the view
+    @activeLink = 'todos'
+
+
+    if params[:status] == "nuevos"
+      @render = @nuevos
+      @activeLink = 'nuevos'
+    end
+
+    if params[:status] == "penPres"
+      @render = @pendientePresupuesto
+      @activeLink = 'penPres'
+    end
+
+    if params[:status] == "presAcpt"
+      @render = @presupuestoAceptado
+      @activeLink = 'presAcpt'
+    end
+
+    if params[:status] == "penMat"
+      @render = @pendienteMaterial
+      @activeLink = 'penMat'
+    end
+
+    if params[:status] == "penFecha"
+      @render = @pendienteFechaInstalacion
+      @activeLink = 'penFecha'
+    end
+
+    if params[:status] == "penSAT"
+      @render = @pendienteSAT
+      @activeLink = 'penSAT'
+    end
+
+
+    if params[:status] == "completados"
+      @render = @facturados
+      @activeLink = 'completados'
+    end
+
+
   end
+
+  def completados
+
+
+    @render = @completados
+    @activeLink = 'completados'
+
+    render "index"
+  end
+
 
   # GET /events/1
   # GET /events/1.json
@@ -69,6 +140,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:titulo, :descripcion, :fecha_contacto, :nombre_contacto, :numero_contacto, :shop_id, :type_id , :state_id)
+      params.require(:event).permit(:titulo, :descripcion, :fecha_contacto, :nombre_contacto, :numero_contacto, :shop_id, :type_id , :state_id, :user_id)
     end
 end

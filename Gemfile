@@ -29,7 +29,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7
+
+# gem for improving dropdowns by inlcuding a search
+gem "select2-rails"
+
+# pagination for objects
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
