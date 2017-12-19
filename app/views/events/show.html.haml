@@ -1,3 +1,25 @@
+.row
+  .col-sm-6
+    .card
+      .card-body
+        %h4.card-title Hola
+        %p Lorem ipsum...
+  .col-sm-6
+    .card
+      .card-body
+        %h5.card-title Datos Contacto
+        %p.card-text
+          Contacto: #{@event.nombre_contacto}
+          |
+          Fecha #{@event.fecha_contacto}
+          |
+          #{@event.numero_contacto}
+        %p.card-text
+          = @event.shop.titulo
+          = @event.shop.dir1
+
+%br
+
 
 .card
   .card-header

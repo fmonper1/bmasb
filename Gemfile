@@ -37,6 +37,7 @@ gem "select2-rails"
 # pagination for objects
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+  gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
