@@ -59,7 +59,7 @@
     - @render.each do |event|
       %tr{class: event.state.table_class}
         %td= link_to event.titulo, event
-        %td= event.descripcion
+        %td= truncate(event.descripcion, length:350, separator: ' ')
         %td= event.fecha_contacto
         %td= event.nombre_contacto
         %td= event.numero_contacto
