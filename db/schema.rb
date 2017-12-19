@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20171009134802) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text "comentario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "event_id"
+    t.bigint "user_id"
+    t.bigint "event_id"
     t.index ["event_id"], name: "index_comments_on_event_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -36,10 +39,10 @@ ActiveRecord::Schema.define(version: 20171009134802) do
     t.string "numero_contacto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "shop_id"
-    t.integer "type_id"
-    t.integer "state_id"
-    t.integer "user_id"
+    t.bigint "shop_id"
+    t.bigint "type_id"
+    t.bigint "state_id"
+    t.bigint "user_id"
     t.index ["shop_id"], name: "index_events_on_shop_id"
     t.index ["state_id"], name: "index_events_on_state_id"
     t.index ["type_id"], name: "index_events_on_type_id"
@@ -71,12 +74,16 @@ ActiveRecord::Schema.define(version: 20171009134802) do
     t.string "dir4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "company_id"
+    t.bigint "company_id"
     t.index ["company_id"], name: "index_shops_on_company_id"
   end
 
-# Could not dump table "states" because of following StandardError
-#   Unknown type 'String' for column 'table_class'
+  create_table "states", force: :cascade do |t|
+    t.string "titulo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "table_class"
+  end
 
   create_table "types", force: :cascade do |t|
     t.string "titulo"
@@ -101,4 +108,11 @@ ActiveRecord::Schema.define(version: 20171009134802) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
+  add_foreign_key "events", "shops"
+  add_foreign_key "events", "states"
+  add_foreign_key "events", "types"
+  add_foreign_key "events", "users"
+  add_foreign_key "shops", "companies"
 end
