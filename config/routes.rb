@@ -9,12 +9,12 @@ Rails.application.routes.draw do
       resources :comments
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root :to => "events#index"
+  # root :to => "events#index"
 
-  as :user do
-    get 'login', to: 'devise/sessions#new'
+  devise_scope :user do
+    root to: "devise/sessions#new"
   end
-  
+
   get '/events/completados', to: 'events#scompletados'
 
 end
