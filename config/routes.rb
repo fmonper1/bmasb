@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-  get '/events', to: 'events#index'
+  get '/', to: 'events#index'
 
 
   get '/events/completados', to: 'events#scompletados'
