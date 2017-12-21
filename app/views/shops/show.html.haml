@@ -25,15 +25,18 @@
       %th.col-auto Fecha contacto
       %th.col-auto Nombre contacto
       %th.col-auto Numero contacto
+      %th.col-auto Estado
+
 
   %tbody
     - @eventosRelacionados.each do |event|
       %tr
         %td= link_to event.titulo, event
-        %td= truncate(event.descripcion, length:350, separator: ' ')
+        %td= truncate(event.descripcion, length:150, separator: ' ')
         %td= event.fecha_contacto
         %td= event.nombre_contacto
         %td= event.numero_contacto
+        %td= event.state.titulo
 
 = link_to 'Edit', edit_shop_path(@shop)
 |

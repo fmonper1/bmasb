@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # root :to => "events#index"
 
   authenticated :user do
-    root 'events#index'
+    root 'events#index', as: :authenticated_root
   end
 
   root "devise/sessions#new"

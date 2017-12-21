@@ -33,7 +33,7 @@
           |
           #{@event.numero_contacto}
         %p.card-text
-          = @event.shop.titulo
+          = link_to @event.shop.titulo, @event.shop
           = @event.shop.dir1
 
 %br
