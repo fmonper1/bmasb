@@ -16,10 +16,10 @@
       %strong Dir4:
       = @shop.dir4
 
-  .card-footer
-    %a.btn.btn-primary.btn-sm{:href => edit_shop_path(@shop)} Editar
-    = link_to 'Eliminar', @shop, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
-    = link_to 'volver', shops_path, :class => "button btn btn-link btn-sm"
+    .card-footer
+      %a.btn.btn-primary.btn-sm{:href => edit_shop_path(@shop)} Editar
+      = link_to 'Eliminar', @shop, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
+      = link_to 'volver', shops_path, :class => "button btn btn-link btn-sm"
 
 
 

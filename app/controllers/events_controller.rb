@@ -123,7 +123,7 @@ class EventsController < ApplicationController
   end
 
   def changeStatus
-    @event.
+    # @event.
   end
 
   # DELETE /events/1
