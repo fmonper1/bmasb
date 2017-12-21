@@ -1,12 +1,12 @@
-%p#notice= notice
 
 .row
-  .col-sm-6.col-md-6
+  .col
     %h3 Tiendas
-    %br
-  .col-sm-6.col-md-6
-    = link_to 'Añadir Tienda', new_shop_path, :class => "button btn btn-primary btn-sm float-md-right"
 
+  .col
+    = link_to 'Añadir Tienda', new_shop_path, :class => "button btn btn-primary btn-sm float-right"
+
+%hr
 
 %table.table.table-responsive
   %thead.thead-inverse
