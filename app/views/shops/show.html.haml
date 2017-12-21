@@ -1,20 +1,29 @@
-%p#notice= notice
-%p
-  %strong Titulo:
-  = @shop.titulo
-%p
-  %strong Dir1:
-  = @shop.dir1
-%p
-  %strong Dir2:
-  = @shop.dir2
-%p
-  %strong Dir3:
-  = @shop.dir3
-%p
-  %strong Dir4:
-  = @shop.dir4
+.card
+  .card-body
 
+    %h5.card-title
+      = @shop.titulo
+    %p
+      %strong Dir1:
+      = @shop.dir1
+    %p
+      %strong Dir2:
+      = @shop.dir2
+    %p
+      %strong Dir3:
+      = @shop.dir3
+    %p
+      %strong Dir4:
+      = @shop.dir4
+
+  .card-footer
+    %a.btn.btn-primary.btn-sm{:href => edit_shop_path(@shop)} Editar
+    = link_to 'Eliminar', @shop, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
+    = link_to 'volver', shops_path, :class => "button btn btn-link btn-sm"
+
+
+
+%br
 
 %h4 Eventos relacionados a #{@shop.titulo}
 %table.table.table-responsive
