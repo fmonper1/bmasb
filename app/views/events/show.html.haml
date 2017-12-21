@@ -1,9 +1,27 @@
 .row
+  .col-md-12
+    .card
+      .card-body
+        %h5.card-title
+          = @event.titulo
+        %p.card-text
+        = simple_format(@event.descripcion)
+
+      .card-footer
+        %a.btn.btn-primary.btn-sm{:href => edit_event_path(@event)} Editar
+        = link_to 'Eliminar', @event, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
+        = link_to 'volver', events_path, :class => "button btn btn-link btn-sm"
+
+%br
+.row
   .col-sm-6
     .card
       .card-body
-        %h4.card-title Hola
-        %p Lorem ipsum...
+        %h5.card-title Detalles
+        %p Tipo de evento #{@event.type.titulo}
+        %p Estado "#{@event.state.titulo}"
+        %p Creado por #{@event.user.email}
+        %p Creado el #{@event.created_at}
   .col-sm-6
     .card
       .card-body
@@ -17,43 +35,6 @@
         %p.card-text
           = @event.shop.titulo
           = @event.shop.dir1
-
-%br
-
-
-.card
-  .card-header
-    .row
-      .col-md-6
-        Tipo de evento #{@event.type.titulo}
-      .col-md-6
-        Estado "#{@event.state.titulo}"
-
-  .row
-    .col-md-7
-      .card-body
-        %h5.card-title
-          = @event.titulo
-        Publicado por: #{@event.user.email}
-    .col-md-5
-      .card-body
-        %p.card-text
-          Contacto: #{@event.nombre_contacto}
-          |
-          Fecha #{@event.fecha_contacto}
-          |
-          #{@event.numero_contacto}
-        %p.card-text
-          = @event.shop.titulo
-          = @event.shop.dir1
-  .card-body
-    %p.card-text
-      = simple_format(@event.descripcion)
-
-  .card-footer
-    %a.btn.btn-primary.btn-sm{:href => edit_event_path(@event)} Editar
-    = link_to 'Eliminar', @event, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
-    = link_to 'volver', events_path, :class => "button btn btn-link btn-sm"
 
 %br
 
