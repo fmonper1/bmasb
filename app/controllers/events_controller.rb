@@ -13,7 +13,6 @@ class EventsController < ApplicationController
     @pendienteSAT = Event.where(state_id: 6).page(params[:page]).per(5)
     @facturados = Event.where(state_id: 7).page(params[:page]).per(5)
 
-
     @render = @events
 
     @newCount = @nuevos.total_count
