@@ -1,4 +1,5 @@
-= simple_form_for @event, defaults: { input_html: { class: 'form-control' } } do |f|
+-# = simple_form_for @event, :url => { :action => updateStatus_events_path(@event) } ,defaults: { input_html: { class: 'form-control' } } do |f|
+= simple_form_for @event, :url => { :action => "update" } ,defaults: { input_html: { class: 'form-control' } } do |f|
   .row
     .col-md-12
       = f.association :state, label_method: :titulo, value_method: :id

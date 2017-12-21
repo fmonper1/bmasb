@@ -1,5 +1,9 @@
 .row
   .col-md-12
+    = link_to 'Volver', events_path, :class => "button btn btn-link"
+
+.row
+  .col-md-12
     .card
       .card-body
         %h5.card-title
@@ -9,10 +13,8 @@
 
       .card-footer
         %a.btn.btn-primary.btn-sm{:href => edit_event_path(@event)} Editar
-        = link_to 'Eliminar', @event, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
-        = link_to 'volver', events_path, :class => "button btn btn-link btn-sm"
         %a.button.btn.btn-primary.btn-sm{"aria-controls" => "collapseStatusChange", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
-          Cambiar estado
+          Cambiar Estado
 
 #collapseExample.collapse
   %br
@@ -51,3 +53,7 @@
 %br
 %h5 Añade un comentario
 = render 'comments/form'
+
+%br
+
+= link_to 'Eliminar', @event, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"

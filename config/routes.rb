@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   end
   root 'devise/sessions#new'
 
-  get '/events/completados', to: 'events#scompletados'
+  patch '/events/updateStatus', to: 'events#updateStatus'
 
 end
