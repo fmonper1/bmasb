@@ -11,12 +11,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root :to => "events#index"
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
+  authenticated :user do
+    root 'events#index'
   end
 
-  get '/', to: 'events#index'
-
+  root "devise/sessions#new"
 
   get '/events/completados', to: 'events#scompletados'
 

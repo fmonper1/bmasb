@@ -13,12 +13,3 @@ development:
 #   host: localhost
 #   min_messages: warning
 #   username:
-
-production:
-  # adapter: sqlite3
-  # database: db/development.sqlite3
-  host: ''
-  adapter: postgresql
-  database: bmasb_production
-  username: fernando
-  # password:
