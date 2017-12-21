@@ -1,4 +1,4 @@
-%h5 Log in
+%h5 Conectarse a BmásB
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
     = f.input :email, required: false, autofocus: true, input_html: { class: 'form-control' }
@@ -6,4 +6,5 @@
     = f.input :remember_me, input_html: { class: 'form-control' }, as: :boolean if devise_mapping.rememberable?
   .form-actions
     = f.submit "Conectarse", :class => "btn btn-primary"
+%br
 = render "devise/shared/links"
