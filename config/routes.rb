@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'events#index', as: :authenticated_root
   end
-
-  root "devise/sessions#new"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+  root 'devise/sessions#new'
 
   get '/events/completados', to: 'events#scompletados'
 
