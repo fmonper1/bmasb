@@ -1,9 +1,13 @@
-User.create!([
-  {email: "fernando.montero.perez@gmail.com", encrypted_password: "$2a$11$dLvnNVXjmUNvGcgqRMwkgeFne5EI6oHNQ7HALef8qsJ.aRq/WqHLu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2017-12-19 20:35:22", last_sign_in_at: "2017-12-19 20:35:22", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
+State.create!([
+  {titulo: "Nuevo", table_class: nil},
+  {titulo: "Pendiente Presupuesto", table_class: nil},
+  {titulo: "Presupuesto Aceptado", table_class: nil},
+  {titulo: "Pendiente Material", table_class: nil},
+  {titulo: "Pendiente Fecha Instalacion", table_class: nil},
+  {titulo: "Pendiente Orden SAT", table_class: nil},
+  {titulo: "Facturado", table_class: nil}
 ])
-Company.create!([
-  {titulo: "New Balance Canarias"}
-])
-Shop.create!([
-  {titulo: "New Balance La Laguna", dir1: "", dir2: "", dir3: "", dir4: "", company_id: 1}
+Type.create!([
+  {titulo: "Comercial"},
+  {titulo: "Avería"}
 ])
