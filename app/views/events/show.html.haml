@@ -11,6 +11,13 @@
         %a.btn.btn-primary.btn-sm{:href => edit_event_path(@event)} Editar
         = link_to 'Eliminar', @event, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-danger btn-sm"
         = link_to 'volver', events_path, :class => "button btn btn-link btn-sm"
+        %a.button.btn.btn-primary.btn-sm{"aria-controls" => "collapseStatusChange", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
+          Cambiar estado
+
+#collapseExample.collapse
+  %br
+  .card.card-body
+    = render 'update_status_form', event: @event
 
 %br
 .row

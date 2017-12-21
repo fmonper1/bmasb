@@ -122,10 +122,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def changeStatus
-    # @event.
-  end
-
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
