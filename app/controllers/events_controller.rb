@@ -13,6 +13,9 @@ class EventsController < ApplicationController
     @pendienteSAT = Event.where(state_id: 6).page(params[:page]).per(5)
     @facturados = Event.where(state_id: 7).page(params[:page]).per(5)
 
+    @estados = State.all
+    # @estados = [State.all, State.all.count]
+
     @render = @events
 
     @newCount = @nuevos.total_count
@@ -26,43 +29,15 @@ class EventsController < ApplicationController
 
     # SET activeLink to set active links in the view
     @activeLink = 'todos'
+    @dropdownTexto = "Mostrando todos"
 
+    if params[:status].present?
+      @render = Event.where(state_id: "#{params[:status]}").page(params[:page]).per(5)
+      @activeLink = params[:status]
+      @dropdownTexto = State.find(params[:status]).titulo
 
-    if params[:status] == "nuevos"
-      @render = @nuevos
-      @activeLink = 'nuevos'
     end
 
-    if params[:status] == "penPres"
-      @render = @pendientePresupuesto
-      @activeLink = 'penPres'
-    end
-
-    if params[:status] == "presAcpt"
-      @render = @presupuestoAceptado
-      @activeLink = 'presAcpt'
-    end
-
-    if params[:status] == "penMat"
-      @render = @pendienteMaterial
-      @activeLink = 'penMat'
-    end
-
-    if params[:status] == "penFecha"
-      @render = @pendienteFechaInstalacion
-      @activeLink = 'penFecha'
-    end
-
-    if params[:status] == "penSAT"
-      @render = @pendienteSAT
-      @activeLink = 'penSAT'
-    end
-
-
-    if params[:status] == "completados"
-      @render = @facturados
-      @activeLink = 'completados'
-    end
 
 
   end

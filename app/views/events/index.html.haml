@@ -36,38 +36,30 @@
 
 .dropdown.show.d-block.d-sm-none
   %a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
-    Filtrar Eventos
+    Filtrar: #{@dropdownTexto}
   .dropdown-menu{"aria-labelledby" => "dropdownMenuLink"}
-
     %a.dropdown-item{:href => "/events", :class => current_class?('todos')} Mostrar Todos
 
-    %a.dropdown-item{:href => "?status=nuevos", :class => current_class?('nuevos')} Nuevos (#{@newCount})
+    -@estados.each do |estado|
 
-    %a.dropdown-item{:href => "?status=penPres", :class => current_class?('penPres')} Pen. Presupuesto (#{@e2Count})
 
-    %a.dropdown-item{:href => "?status=presAcpt", :class => current_class?('presAcpt')} Presupuesto Aceptado (#{@e3Count})
+      %a.dropdown-item{:href => "?status=#{estado.id}", :class => current_class?("#{estado.id}")}
+        = estado.titulo
 
-    %a.dropdown-item{:href => "?status=penMat", :class => current_class?('penMat')} Pen. Material (#{@e4Count})
-
-    %a.dropdown-item{:href => "?status=penFecha", :class => current_class?('penFecha')} Pen. Fecha Install (#{@e5Count})
-
-    %a.dropdown-item{:href => "?status=penSAT", :class => current_class?('penSAT')} Pen. SAT (#{@e6Count})
-
-    %a.dropdown-item{:href => "?status=completados", :class => current_class?('completados')} Facturados (#{@e7Count})
+    -# %a.dropdown-item{:href => "?status=penPres", :class => current_class?('penPres')} Pen. Presupuesto (#{@e2Count})
+    -#
+    -# %a.dropdown-item{:href => "?status=presAcpt", :class => current_class?('presAcpt')} Presupuesto Aceptado (#{@e3Count})
+    -#
+    -# %a.dropdown-item{:href => "?status=penMat", :class => current_class?('penMat')} Pen. Material (#{@e4Count})
+    -#
+    -# %a.dropdown-item{:href => "?status=penFecha", :class => current_class?('penFecha')} Pen. Fecha Install (#{@e5Count})
+    -#
+    -# %a.dropdown-item{:href => "?status=penSAT", :class => current_class?('penSAT')} Pen. SAT (#{@e6Count})
+    -#
+    -# %a.dropdown-item{:href => "?status=completados", :class => current_class?('completados')} Facturados (#{@e7Count})
 
 %br
 
--# %table.table.table-responsive
--#   %thead.thead-inverse
--#     %tr
--#       %th.col-md-2 Titulo
--#       %th.col-md-5 Descripcion
--#       %th.col-auto Fecha contacto
--#       %th.col-auto Nombre contacto
--#       %th.col-auto Numero contacto
--#       %th.col-auto Tienda
--#       %th.col-auto Tipo
--#       -# %th Estado
 -#   %tbody
 -#     - @render.each do |event|
 -#       %tr{class: event.state.table_class}
@@ -86,15 +78,13 @@
         = link_to event.titulo, event
       %h6.card-subtitle.mb-2.text-muted
         = event.shop.titulo
-      .collapse{ :id => "descripcion-#{event.id}"}
-        %p
+      -# .collapse{ :id => "descripcion-#{event.id}"}
+      %p.card-text
+        .collapse{ :id => "descripcion-#{event.id}"}
           = event.descripcion
 
-      -# %a.btn.btn-outline-primary{ href: '#' }
-      -#   Ver Más
       %a.btn.btn-outline-primary{:href => "#descripcion-#{event.id}", "data-target" => "#descripcion-#{event.id}", "data-toggle" => "collapse"}
         Ver más
-      -# = limnk_to "Ver más", "#", :class => "btn btn-outline-primary"
 
       = link_to "Ver evento", event, :class => "btn btn-outline-secondary"
 
