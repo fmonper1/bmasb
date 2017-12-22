@@ -7,33 +7,39 @@
         %small.text-muted
           = @shop.company.titulo
   .col
-    %a.btn.btn-outline-primary.btn-sm{:href => edit_shop_path(@shop)} Editar
-  .col
-    = link_to 'Eliminar', @shop, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-outline-danger btn-sm"
+    %a.btn.btn-outline-primary{:href => edit_shop_path(@shop)} Editar
+
+    = link_to 'Eliminar', @shop, method: :delete, data: { confirm: 'Estas seguro? Esto es irreversible' }, :class => "button btn btn-outline-danger"
   -# .col
     = link_to 'volver', shops_path, :class => "button btn btn-outline-secondary btn-sm"
 
 %hr
 
-.card
-  .card-body
+-if @shop.dir1.present?
+  %p
+    = @shop.dir1
 
-    %h4.card-title
-      = @shop.titulo
-    %p
-      %strong Dir1:
-      = @shop.dir1
-    %p
-      %strong Dir2:
-      = @shop.dir2
-    %p
-      %strong Dir3:
-      = @shop.dir3
-    %p
-      %strong Dir4:
-      = @shop.dir4
+-if @shop.dir2.present?
+  %p
+    = @shop.dir2
 
-  .card-footer
+-if @shop.dir3.present?
+  %p
+    = @shop.dir3
+
+-if @shop.dir3.present?
+  %p
+    = @shop.dir3
+
+
+-# .card
+-#   .card-body
+-#
+-#     %h4.card-title
+-#       = @shop.titulo
+-#
+-#
+-#   .card-footer
 
 
 

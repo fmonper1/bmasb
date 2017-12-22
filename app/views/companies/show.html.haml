@@ -1,4 +1,26 @@
-%p#notice= notice
+-# %p#notice= notice
+.row
+  .col-sm-12
+    %p
+      %h4
+        = @company.titulo
+
+%hr
+
+
+%h5 Tiendas de #{@company.titulo}
+%table.table.table-responsive
+  %thead.thead-inverse
+    %tr
+      %th Titulo
+
+
+
+  %tbody
+    - @tiendas.each do |t|
+      %tr
+        %td= link_to t.titulo, t
+
 %p
   %strong Titulo:
   = @company.titulo
