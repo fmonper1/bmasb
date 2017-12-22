@@ -6,15 +6,18 @@
   .col-md-12
     .card
       .card-body
-        %h5.card-title
+        %h4.card-title
           = @event.titulo
         %p.card-text
         = simple_format(@event.descripcion)
 
-      .card-footer
-        %a.btn.btn-primary.btn-sm{:href => edit_event_path(@event)} Editar
-        %a.button.btn.btn-primary.btn-sm{"aria-controls" => "collapseStatusChange", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
-          Cambiar Estado
+%br
+
+.row
+  .col
+    %a.btn.btn-outline-secondary.btn-sm{:href => edit_event_path(@event)} Editar
+    %a.button.btn.btn-outline-secondary.btn-sm{"aria-controls" => "collapseStatusChange", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
+      Cambiar Estado
 
 #collapseExample.collapse
   %br
@@ -23,7 +26,7 @@
 
 %br
 .row
-  .col-sm-6
+  -# .col-sm-6
     .card
       .card-body
         %h5.card-title Detalles
@@ -31,7 +34,7 @@
         %p Estado "#{@event.state.titulo}"
         %p Creado por #{@event.user.email}
         %p Creado el #{@event.created_at}
-  .col-sm-6
+  .col-sm-12
     .card
       .card-body
         %h5.card-title Datos Contacto

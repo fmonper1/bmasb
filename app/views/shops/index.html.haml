@@ -1,10 +1,12 @@
 
 .row
-  .col
-    %h3 Tiendas
+  .col-sm-12
+    %p
+      %h3
+        Tiendas
 
   .col
-    = link_to 'Añadir Tienda', new_shop_path, :class => "button btn btn-primary btn-sm float-right"
+    = link_to 'Añadir Tienda', new_shop_path, :class => "button btn btn-primary float-right"
 
 %hr
 
@@ -26,6 +28,3 @@
         %td= shop.dir3
         %td= shop.dir4
         %td= shop.company.titulo
-
-%br/
-= link_to 'New Shop', new_shop_path

@@ -1,64 +1,29 @@
 
 .row
+  .col-sm-12
+    %p
+      %h3
+        Eventos
+        %br
+        %small.text-muted
+          = @dropdownTexto
   .col
-    %h3 Eventos
-  .col
-    = link_to 'Crear Evento', new_event_path, :class => "button btn btn-primary btn-sm float-right"
+    .dropdown.show
+      %a#dropdownMenuLink.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
+        Filtrar
+      .dropdown-menu{"aria-labelledby" => "dropdownMenuLink"}
+        %a.dropdown-item{:href => "/events", :class => current_class?('todos')} Mostrar Todos
 
+        -@estados.each do |estado|
+
+          %a.dropdown-item{:href => "?status=#{estado.id}", :class => current_class?("#{estado.id}")}
+            = estado.titulo
+
+  .col
+    = link_to 'Crear Evento', new_event_path, :class => "button btn btn-primary float-right"
 
 %hr
 
-
-%ul.nav.nav-tabs.nav-fill.flex-sm-column.flex-md-row.d-none.d-none.d-sm-flex
-  %li.nav-item
-    %a.nav-link{:href => "/events", :class => current_class?('todos')} Mostrar Todos
-
-  %li.nav-item
-    %a.nav-link{:href => "?status=nuevos", :class => current_class?('nuevos')} Nuevos (#{@newCount})
-
-  %li.nav-item
-    %a.nav-link{:href => "?status=penPres", :class => current_class?('penPres')} Pen. Presupuesto (#{@e2Count})
-
-  %li.nav-item
-    %a.nav-link{:href => "?status=presAcpt", :class => current_class?('presAcpt')} Presupuesto Aceptado (#{@e3Count})
-
-  %li.nav-item
-    %a.nav-link{:href => "?status=penMat", :class => current_class?('penMat')} Pen. Material (#{@e4Count})
-
-  %li.nav-item
-    %a.nav-link{:href => "?status=penFecha", :class => current_class?('penFecha')} Pen. Fecha Install (#{@e5Count})
-
-  %li.nav-item
-    %a.nav-link{:href => "?status=penSAT", :class => current_class?('penSAT')} Pen. SAT (#{@e6Count})
-
-  %li.nav-item
-    %a.nav-link{:href => "?status=completados", :class => current_class?('completados')} Facturados (#{@e7Count})
-
-.dropdown.show.d-block.d-sm-none
-  %a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
-    Filtrar: #{@dropdownTexto}
-  .dropdown-menu{"aria-labelledby" => "dropdownMenuLink"}
-    %a.dropdown-item{:href => "/events", :class => current_class?('todos')} Mostrar Todos
-
-    -@estados.each do |estado|
-
-
-      %a.dropdown-item{:href => "?status=#{estado.id}", :class => current_class?("#{estado.id}")}
-        = estado.titulo
-
-    -# %a.dropdown-item{:href => "?status=penPres", :class => current_class?('penPres')} Pen. Presupuesto (#{@e2Count})
-    -#
-    -# %a.dropdown-item{:href => "?status=presAcpt", :class => current_class?('presAcpt')} Presupuesto Aceptado (#{@e3Count})
-    -#
-    -# %a.dropdown-item{:href => "?status=penMat", :class => current_class?('penMat')} Pen. Material (#{@e4Count})
-    -#
-    -# %a.dropdown-item{:href => "?status=penFecha", :class => current_class?('penFecha')} Pen. Fecha Install (#{@e5Count})
-    -#
-    -# %a.dropdown-item{:href => "?status=penSAT", :class => current_class?('penSAT')} Pen. SAT (#{@e6Count})
-    -#
-    -# %a.dropdown-item{:href => "?status=completados", :class => current_class?('completados')} Facturados (#{@e7Count})
-
-%br
 
 -#   %tbody
 -#     - @render.each do |event|
@@ -71,6 +36,9 @@
 -#         %td= event.shop.titulo
 -#         %td= event.type.titulo
 -#         -# %td= event.state.titulo
+- if @render.blank?
+  %h6 No hay eventos en este estado.
+
 - @render.each do |event|
   .card
     .card-body
