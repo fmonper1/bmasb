@@ -57,29 +57,53 @@
 
 %br
 
-%table.table.table-responsive
-  %thead.thead-inverse
-    %tr
-      %th.col-md-2 Titulo
-      %th.col-md-5 Descripcion
-      %th.col-auto Fecha contacto
-      %th.col-auto Nombre contacto
-      %th.col-auto Numero contacto
-      %th.col-auto Tienda
-      %th.col-auto Tipo
-      -# %th Estado
-  %tbody
-    - @render.each do |event|
-      %tr{class: event.state.table_class}
-        %td= link_to event.titulo, event
-        %td= truncate(event.descripcion, length:350, separator: ' ')
-        %td= event.fecha_contacto
-        %td= event.nombre_contacto
-        %td= event.numero_contacto
-        %td= event.shop.titulo
-        %td= event.type.titulo
-        -# %td= event.state.titulo
+-# %table.table.table-responsive
+-#   %thead.thead-inverse
+-#     %tr
+-#       %th.col-md-2 Titulo
+-#       %th.col-md-5 Descripcion
+-#       %th.col-auto Fecha contacto
+-#       %th.col-auto Nombre contacto
+-#       %th.col-auto Numero contacto
+-#       %th.col-auto Tienda
+-#       %th.col-auto Tipo
+-#       -# %th Estado
+-#   %tbody
+-#     - @render.each do |event|
+-#       %tr{class: event.state.table_class}
+-#         %td= link_to event.titulo, event
+-#         %td= truncate(event.descripcion, length:350, separator: ' ')
+-#         %td= event.fecha_contacto
+-#         %td= event.nombre_contacto
+-#         %td= event.numero_contacto
+-#         %td= event.shop.titulo
+-#         %td= event.type.titulo
+-#         -# %td= event.state.titulo
+- @render.each do |event|
+  .card
+    .card-body
+      %h4.card-title
+        = link_to event.titulo, event
+      %h6.card-subtitle.mb-2.text-muted
+        = event.shop.titulo
+      .collapse{ :id => "descripcion-#{event.id}"}
+        %p
+          = event.descripcion
 
-%br/
+      -# %a.btn.btn-outline-primary{ href: '#' }
+      -#   Ver Más
+      %a.btn.btn-outline-primary{:href => "#descripcion-#{event.id}", "data-target" => "#descripcion-#{event.id}", "data-toggle" => "collapse"}
+        Ver más
+      -# = limnk_to "Ver más", "#", :class => "btn btn-outline-primary"
+
+      = link_to "Ver evento", event, :class => "btn btn-outline-secondary"
+
+
+
+  %br
+
+
+
+
 
 #{paginate @render, theme: 'twitter-bootstrap-4'}
