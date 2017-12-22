@@ -34,11 +34,12 @@ gem 'jbuilder', '~> 2.5'
 
 # gem for improving dropdowns by inlcuding a search
 gem "select2-rails"
+gem 'bootstrap-datepicker-rails'
 
 # pagination for objects
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
-  gem 'rails_12factor'
+gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

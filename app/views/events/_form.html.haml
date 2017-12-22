@@ -7,7 +7,9 @@
     .col
       = f.input :numero_contacto
     .col
-      = f.input :fecha_contacto, as: :date
+
+      = f.input :fecha_contacto
+      - # s: :datepicker, 'data-behaviour' => 'datepicker', :class => "eventDatePicker"
 
   .row
     .col-md-6

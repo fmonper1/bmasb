@@ -1,4 +1,15 @@
-%h1 Editing Event
+.row
+  .col-sm-12
+    %p
+      %h4
+        Editando evento
+        %br
+        %small.text-muted
+          = @event.titulo + " - " + @event.shop.titulo
+
+%hr
+
+
 = render 'form', event: @event
 = link_to 'Show', @event
 |
