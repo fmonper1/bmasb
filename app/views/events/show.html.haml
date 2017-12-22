@@ -1,13 +1,15 @@
 .row
   .col-md-12
-    = link_to 'Volver', events_path, :class => "button btn btn-link"
-
+    = link_to '< Volver a eventos', events_path, :class => "button btn btn-link"
+-# %br
 .row
   .col-md-12
     .card
       .card-body
         %h4.card-title
           = @event.titulo
+        %h5.card-subtitle
+          = link_to @event.shop.titulo, @event.shop
         %p.card-text
         = simple_format(@event.descripcion)
 
@@ -16,16 +18,18 @@
 .row
   .col
     %a.btn.btn-outline-secondary.btn-sm{:href => edit_event_path(@event)} Editar
-    %a.button.btn.btn-outline-secondary.btn-sm{"aria-controls" => "collapseStatusChange", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
-      Cambiar Estado
+    %a.button.btn.btn-outline-secondary.btn-sm{"aria-controls" => "collapseStatusChange", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#toggleCambioEstado"}
+      Cambiar estado
+    %a.button.btn.btn-outline-secondary.btn-sm{"aria-controls" => "collapseStatusChange", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#toggleContacto"}
+      Ver contacto
 
-#collapseExample.collapse
+#toggleCambioEstado.collapse
   %br
   .card.card-body
     = render 'update_status_form', event: @event
 
 %br
-.row
+#toggleContacto.collapse.row
   -# .col-sm-6
     .card
       .card-body

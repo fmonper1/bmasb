@@ -1,9 +1,14 @@
-%h5 Conectarse a BmásB
+.row
+  .col-sm-12
+    %p
+      %h3
+        Conectarse a BmásB
+
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
     = f.input :email, required: false, autofocus: true, input_html: { class: 'form-control' }
     = f.input :password, required: false, input_html: { class: 'form-control' }
-    = f.input :remember_me, input_html: { class: 'form-control' }, as: :boolean if devise_mapping.rememberable?
+    = f.input :remember_me, input_html: { class: 'form-check-label' }, as: :boolean if devise_mapping.rememberable?
   .form-actions
     = f.submit "Conectarse", :class => "btn btn-primary"
 %br
